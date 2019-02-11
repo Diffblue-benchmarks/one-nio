@@ -1,0 +1,327 @@
+# Tested on Deeptest release 1.10.0
+cbmcArguments:
+  cover-function-only: false
+  depth: false
+  do-not-test-methods-with-access: [ private ]
+  java-generate-no-comments: true
+  no-trivial-tests: true
+phases:
+-
+  timeout: 300
+  cbmcArguments:
+    java-assume-inputs-non-null: true
+    max-nondet-array-length: 10
+    string-non-empty: true
+    unwind: 1
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 20
+    unwind: 2
+-
+  timeout: 300
+  cbmcArguments:
+    max-nondet-array-length: 30
+    max-nondet-string-length: 10
+    unwind: 3
+units:
+  - target:
+    - dir: target/classes
+      file: one/nio/lz4/LZ4.class
+      sourceDir: src
+      sourceFile: one/nio/lz4/LZ4.java
+    # Child of LZ4.class
+    - dir: target/classes
+      file: one/nio/mem/DirectMemory.class
+      sourceDir: src
+      sourceFile: one/nio/mem/DirectMemory.java
+    # Child of LZ4.class
+    - dir: target/classes
+      file: one/nio/os/NativeLibrary.class
+      sourceDir: src
+      sourceFile: one/nio/os/NativeLibrary.java
+  - target:
+    - dir: target/classes
+      file: one/nio/server/CleanupThread.class
+      sourceDir: src
+      sourceFile: one/nio/server/CleanupThread.java
+    # Child of CleanupThread.class
+    - dir: target/classes
+      file: one/nio/net/Session.class
+      sourceDir: src
+      sourceFile: one/nio/net/Session.java
+    # Child of CleanupThread.class
+    - dir: target/classes
+      file: one/nio/os/BatchThread.class
+      sourceDir: src
+      sourceFile: one/nio/os/BatchThread.java
+  - target:
+    - dir: target/classes
+      file: one/nio/http/HttpServer.class
+      sourceDir: src
+      sourceFile: one/nio/http/HttpServer.java
+    # Child of HttpServer.class
+    - dir: target/classes
+      file: one/nio/http/gen/RequestHandlerGenerator.class
+      sourceDir: src
+      sourceFile: one/nio/http/gen/RequestHandlerGenerator.java
+    # Child of HttpServer.class
+    - dir: target/classes
+      file: one/nio/server/RejectedSessionException.class
+      sourceDir: src
+      sourceFile: one/nio/server/RejectedSessionException.java
+    # Child of HttpServer.class
+    - dir: target/classes
+      file: one/nio/server/Server.class
+      sourceDir: src
+      sourceFile: one/nio/server/Server.java
+    # Child of HttpServer.class
+    - dir: target/classes
+      file: one/nio/net/Socket.class
+      sourceDir: src
+      sourceFile: one/nio/net/Socket.java
+  - target:
+    - dir: target/classes
+      file: one/nio/util/URLEncoder.class
+      sourceDir: src
+      sourceFile: one/nio/util/URLEncoder.java
+  - target:
+    - dir: target/classes
+      file: one/nio/rpc/RpcClient.class
+      sourceDir: src
+      sourceFile: one/nio/rpc/RpcClient.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/net/ConnectionString.class
+      sourceDir: src
+      sourceFile: one/nio/net/ConnectionString.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/pool/SocketPool.class
+      sourceDir: src
+      sourceFile: one/nio/pool/SocketPool.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/rpc/stream/RpcStreamImpl.class
+      sourceDir: src
+      sourceFile: one/nio/rpc/stream/RpcStreamImpl.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/CalcSizeStream.class
+      sourceDir: src
+      sourceFile: one/nio/serial/CalcSizeStream.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/DataStream.class
+      sourceDir: src
+      sourceFile: one/nio/serial/DataStream.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/DeserializeStream.class
+      sourceDir: src
+      sourceFile: one/nio/serial/DeserializeStream.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/Repository.class
+      sourceDir: src
+      sourceFile: one/nio/serial/Repository.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/SerializeStream.class
+      sourceDir: src
+      sourceFile: one/nio/serial/SerializeStream.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/Serializer.class
+      sourceDir: src
+      sourceFile: one/nio/serial/Serializer.java
+    # Child of RpcClient.class
+    - dir: target/classes
+      file: one/nio/serial/SerializerNotFoundException.class
+      sourceDir: src
+      sourceFile: one/nio/serial/SerializerNotFoundException.java
+  - target:
+    - dir: target/classes
+      file: one/nio/serial/GeneratedSerializer.class
+      sourceDir: src
+      sourceFile: one/nio/serial/GeneratedSerializer.java
+    # Child of GeneratedSerializer.class
+    - dir: target/classes
+      file: one/nio/gen/BytecodeGenerator.class
+      sourceDir: src
+      sourceFile: one/nio/gen/BytecodeGenerator.java
+    # Child of GeneratedSerializer.class
+    - dir: target/classes
+      file: one/nio/serial/gen/Delegate.class
+      sourceDir: src
+      sourceFile: one/nio/serial/gen/Delegate.java
+    # Child of GeneratedSerializer.class
+    - dir: target/classes
+      file: one/nio/serial/gen/DelegateGenerator.class
+      sourceDir: src
+      sourceFile: one/nio/serial/gen/DelegateGenerator.java
+    # Child of GeneratedSerializer.class
+    - dir: target/classes
+      file: one/nio/serial/gen/StubGenerator.class
+      sourceDir: src
+      sourceFile: one/nio/serial/gen/StubGenerator.java
+  - target:
+    - dir: target/classes
+      file: one/nio/http/HttpClient.class
+      sourceDir: src
+      sourceFile: one/nio/http/HttpClient.java
+    # Child of HttpClient.class
+    - dir: target/classes
+      file: one/nio/net/HttpProxy.class
+      sourceDir: src
+      sourceFile: one/nio/net/HttpProxy.java
+    # Child of HttpClient.class
+    - dir: target/classes
+      file: one/nio/net/SslContext.class
+      sourceDir: src
+      sourceFile: one/nio/net/SslContext.java
+    # Child of HttpClient.class
+    - dir: target/classes
+      file: one/nio/pool/PoolException.class
+      sourceDir: src
+      sourceFile: one/nio/pool/PoolException.java
+    # Child of HttpClient.class
+    - dir: target/classes
+      file: one/nio/util/Utf8.class
+      sourceDir: src
+      sourceFile: one/nio/util/Utf8.java
+  - target:
+    - dir: target/classes
+      file: one/nio/util/QuickSelect.class
+      sourceDir: src
+      sourceFile: one/nio/util/QuickSelect.java
+  - target:
+    - dir: target/classes
+      file: one/nio/mem/OffheapMap.class
+      sourceDir: src
+      sourceFile: one/nio/mem/OffheapMap.java
+    # Child of OffheapMap.class
+    - dir: target/classes
+      file: one/nio/async/AsyncExecutor.class
+      sourceDir: src
+      sourceFile: one/nio/async/AsyncExecutor.java
+    # Child of OffheapMap.class
+    - dir: target/classes
+      file: one/nio/async/ParallelTask.class
+      sourceDir: src
+      sourceFile: one/nio/async/ParallelTask.java
+    # Child of OffheapMap.class
+    - dir: target/classes
+      file: one/nio/lock/RWLock.class
+      sourceDir: src
+      sourceFile: one/nio/lock/RWLock.java
+    # Child of OffheapMap.class
+    - dir: target/classes
+      file: one/nio/util/JavaInternals.class
+      sourceDir: src
+      sourceFile: one/nio/util/JavaInternals.java
+    # Child of OffheapMap.class
+    - dir: target/classes
+      file: one/nio/util/QuickSelect.class
+      sourceDir: src
+      sourceFile: one/nio/util/QuickSelect.java
+  - target:
+    - dir: target/classes
+      file: one/nio/serial/gen/DelegateGenerator.class
+      sourceDir: src
+      sourceFile: one/nio/serial/gen/DelegateGenerator.java
+    # Child of DelegateGenerator.class
+    - dir: target/classes
+      file: one/nio/serial/Default.class
+      sourceDir: src
+      sourceFile: one/nio/serial/Default.java
+    # Child of DelegateGenerator.class
+    - dir: target/classes
+      file: one/nio/serial/FieldDescriptor.class
+      sourceDir: src
+      sourceFile: one/nio/serial/FieldDescriptor.java
+    # Child of DelegateGenerator.class
+    - dir: target/classes
+      file: one/nio/serial/JsonName.class
+      sourceDir: src
+      sourceFile: one/nio/serial/JsonName.java
+    # Child of DelegateGenerator.class
+    - dir: target/classes
+      file: one/nio/serial/SerializeWith.class
+      sourceDir: src
+      sourceFile: one/nio/serial/SerializeWith.java
+    # Child of DelegateGenerator.class
+    - dir: target/classes
+      file: one/nio/util/Hex.class
+      sourceDir: src
+      sourceFile: one/nio/util/Hex.java
+  - target:
+    - dir: target/classes
+      file: one/nio/config/ConfigParser.class
+      sourceDir: src
+      sourceFile: one/nio/config/ConfigParser.java
+  - target:
+    - dir: target/classes
+      file: one/nio/pool/Pool.class
+      sourceDir: src
+      sourceFile: one/nio/pool/Pool.java
+  - target:
+    - dir: target/classes
+      file: one/nio/net/SocksProxy.class
+      sourceDir: src
+      sourceFile: one/nio/net/SocksProxy.java
+    # Child of SocksProxy.class
+    - dir: target/classes
+      file: one/nio/util/ByteArrayBuilder.class
+      sourceDir: src
+      sourceFile: one/nio/util/ByteArrayBuilder.java
+  - target:
+    - dir: target/classes
+      file: one/nio/net/NativeSelector.class
+      sourceDir: src
+      sourceFile: one/nio/net/NativeSelector.java
+  - target:
+    - dir: target/classes
+      file: one/nio/util/Base64.class
+      sourceDir: src
+      sourceFile: one/nio/util/Base64.java
+  - target:
+    - dir: target/classes
+      file: one/nio/mem/SharedMemoryMap.class
+      sourceDir: src
+      sourceFile: one/nio/mem/SharedMemoryMap.java
+    # Child of SharedMemoryMap.class
+    - dir: target/classes
+      file: one/nio/mgt/Management.class
+      sourceDir: src
+      sourceFile: one/nio/mgt/Management.java
+    # Child of SharedMemoryMap.class
+    - dir: target/classes
+      file: one/nio/serial/SerializerCollector.class
+      sourceDir: src
+      sourceFile: one/nio/serial/SerializerCollector.java
+  - target:
+    - dir: target/classes
+      file: one/nio/net/SslContext.class
+      sourceDir: src
+      sourceFile: one/nio/net/SslContext.java
+  - target:
+    - dir: target/classes
+      file: one/nio/cluster/WeightCluster.class
+      sourceDir: src
+      sourceFile: one/nio/cluster/WeightCluster.java
+  - target:
+    - dir: target/classes
+      file: one/nio/http/HttpSession.class
+      sourceDir: src
+      sourceFile: one/nio/http/HttpSession.java
+    # Child of HttpSession.class
+    - dir: target/classes
+      file: one/nio/net/SocketClosedException.class
+      sourceDir: src
+      sourceFile: one/nio/net/SocketClosedException.java
+  - target:
+    - dir: target/classes
+      file: one/nio/util/Utf8.class
+      sourceDir: src
+      sourceFile: one/nio/util/Utf8.java
